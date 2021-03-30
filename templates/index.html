@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech To Text</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href = "{{ url_for('static', filename='styles/index.css') }}" />
+</head>
+<body>
+    <div id = "speechContainer">
+        <h1>Upload an Audio File</h1>
+        <form method = "post" enctype = "multipart/form-data">
+<!--POST Method is for when your taking user data and sending it somwhere to do stuff with it-->
+<!--GET Method is for when someone like requests your page to "get" it like the page and stuff-->
+            <input type = "file" name = "file" />
+            <br>
+            <input id = "submitButton" type = "submit" value = "Convert" />
+        </form>
+        {% if convertedText != "" %}
+        <div id = "convertedTextContainer">
+            <h1>Transcript</h1>
+            <!--the convertedText is called a Jinja variable-->
+            <p id = "convertedText">{{ convertedText }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
